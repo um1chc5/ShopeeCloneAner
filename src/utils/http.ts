@@ -144,3 +144,5 @@ class Http {
 const http = new Http().instance
 
 export default http
+
+export { Http }

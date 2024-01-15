@@ -10,6 +10,7 @@ import Input from 'src/components/Input'
 import { ErrorResponse } from 'src/types/utils.type'
 import { getRules } from 'src/utils/rules'
 import { isAxiosUnprocessableEntityError } from 'src/utils/utils'
+import { Helmet } from 'react-helmet-async'
 
 interface FormData {
   email: string
@@ -57,6 +58,10 @@ export default function Login() {
 
   return (
     <div className='bg-orangeshopee'>
+      <Helmet>
+        <title>Login | Shopee</title>
+        <meta name='description' content='Trang đăng nhập dự án Shopee' />
+      </Helmet>
       <div className='container'>
         <div className='grid grid-cols-1 py-12 lg:grid-cols-5 lg:py-5 lg:pr-10'>
           <div className='lg:col-span-2 lg:col-start-4'>
@@ -85,6 +90,7 @@ export default function Login() {
               />
               <div className='mt-3'>
                 <Button
+                  type='submit'
                   isLoading={loginAccountMutation.isLoading}
                   disabled={loginAccountMutation.isLoading}
                   className='w-full items-center justify-center bg-red-500 px-2 py-4 text-sm uppercase text-white hover:bg-red-600'
