@@ -69,5 +69,7 @@ describe('Login', () => {
     })
 
     fireEvent.submit(submitButton)
+
+    screen.debug(document.body.parentElement as HTMLElement, 999999)
   })
 })
