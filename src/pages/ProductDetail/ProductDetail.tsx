@@ -3,7 +3,7 @@ import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { useContext, useRef, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import productApi from 'src/apis/productApi.api'
-import { Product as ProductType, ProductListConfig } from 'src/types/product.type'
+import { Product as ProductType } from 'src/types/product.type'
 import ProductStar from '../ProductList/RisingStar/ProductStar'
 import { currencyFormat, discountRate, getIdFromNameId, socialStyleNumberFm } from 'src/utils/utils'
 import DOMPurify from 'dompurify'
@@ -111,7 +111,7 @@ function ProductDetail() {
     addToCartMutation.mutate(
       { product_id: product?._id, buy_count: quantity },
       {
-        onSuccess: (data) => {
+        onSuccess: () => {
           queryClient.invalidateQueries({
             queryKey: ['purchases', { status: purchaseStatus.inCart }]
           })
@@ -159,11 +159,7 @@ function ProductDetail() {
                     stroke='currentColor'
                     className='h-5 w-5'
                   >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M15.75 19.5L8.25 12l7.5-7.5'
-                    />
+                    <path strokeLinecap='round' strokeLinejoin='round' d='M15.75 19.5L8.25 12l7.5-7.5' />
                   </svg>
                 </button>
                 <button
@@ -178,11 +174,7 @@ function ProductDetail() {
                     stroke='currentColor'
                     className='h-5 w-5'
                   >
-                    <path
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                      d='M8.25 4.5l7.5 7.5-7.5 7.5'
-                    />
+                    <path strokeLinecap='round' strokeLinejoin='round' d='M8.25 4.5l7.5 7.5-7.5 7.5' />
                   </svg>
                 </button>
                 {product?.images.slice(slideIndex, slideIndex + 5).map((img, index) => {
@@ -195,9 +187,7 @@ function ProductDetail() {
                         onMouseOver={() => setCurrentImage(slideIndex + index)}
                         className='absolute left-0 top-0 h-full w-full object-cover'
                       />
-                      {isActive && (
-                        <div className='absolute inset-0 border-2 border-orangeshopee'></div>
-                      )}
+                      {isActive && <div className='absolute inset-0 border-2 border-orangeshopee'></div>}
                     </div>
                   )
                 })}
@@ -207,9 +197,7 @@ function ProductDetail() {
               <h1 className='pt-3 text-2xl font-medium uppercase'>{product.name}</h1>
               <div className='mt-4 flex items-center'>
                 <div className='flex items-center'>
-                  <div className='mr-3 border-b border-b-orangeshopee text-orangeshopee'>
-                    {product.rating}
-                  </div>
+                  <div className='mr-3 border-b border-b-orangeshopee text-orangeshopee'>{product.rating}</div>
                   <ProductStar
                     rating={product.rating}
                     activeClassname='fill-orangeshopee text-orangeshopee h-4 w-4'
@@ -226,9 +214,7 @@ function ProductDetail() {
                 <div className='text-xl text-gray-500 line-through'>
                   {currencyFormat(product.price_before_discount)}
                 </div>
-                <div className='ml-3 truncate text-3xl text-orangeshopee'>
-                  {currencyFormat(product.price)}
-                </div>
+                <div className='ml-3 truncate text-3xl text-orangeshopee'>{currencyFormat(product.price)}</div>
                 <div className='ml-4 bg-orangeshopee p-1 px-2 text-sm font-semibold uppercase text-white'>
                   {discountRate(product.price_before_discount, product.price)}% giảm
                 </div>
@@ -278,9 +264,7 @@ function ProductDetail() {
         <div className='container mt-8'>
           <h2 className='mb-8 px-16 text-2xl uppercase text-slate-700'>Mô tả sản phẩm</h2>
           <div className='bg-white px-16 py-8'>
-            <div
-              dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product.description) }}
-            ></div>
+            <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(product.description) }}></div>
           </div>
         </div>
         <div className='container mt-8'>

@@ -17,6 +17,6 @@
     "jsx": "react-jsx",
     "baseUrl": "."
   },
-  "include": ["src"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "**/*.mdx"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

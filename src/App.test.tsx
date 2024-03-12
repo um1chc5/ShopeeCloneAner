@@ -1,8 +1,7 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { screen, waitFor } from '@testing-library/react'
+// eslint-disable-next-line import/no-named-as-default
 import userEvent from '@testing-library/user-event'
 import { describe, expect, test } from 'vitest'
-import App from './App'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
 import * as matchers from '@testing-library/jest-dom/matchers'
 import '@testing-library/jest-dom/vitest'
 import path from './constants/Path'

@@ -4,7 +4,6 @@ import path from 'src/constants/Path'
 import { Product as ProductType } from 'src/types/product.type'
 import { currencyFormat, generateNameId, socialStyleNumberFm } from 'src/utils/utils'
 import ProductStar from '../RisingStar/ProductStar'
-import { CustomizedCartItem } from 'src/pages/Cart/Cart'
 
 interface Props {
   product: ProductType
@@ -30,7 +29,9 @@ function Product({ product }: Props) {
             <div className='mr-1 truncate text-xs text-gray-400 line-through'>
               {currencyFormat(product.price_before_discount)}
             </div>
-            <div className='truncate font-semibold text-orangeshopee'>{currencyFormat(product.price)}</div>
+            <div className='truncate font-semibold text-orangeshopee'>
+              {currencyFormat(product.price)}
+            </div>
           </div>
           <div className='mt-3 flex items-center'>
             <ProductStar rating={product.rating} />

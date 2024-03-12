@@ -1,0 +1,21 @@
+import { Canvas, Meta, Story, ArgTypes, Controls } from '@storybook/blocks'
+import * as InputStories from './Input.stories'
+import Input from './Input.tsx'
+
+<Meta component={Input} />
+
+# Input
+
+A Common Input using througout the app: Filter, Form, etc...
+
+## Props
+
+<ArgTypes of={InputStories} />
+
+## Sample
+
+<Canvas of={InputStories.Sample} name='Sample' />
+
+## Email Input
+
+<Canvas of={InputStories.EmailInput} name='EmailInput' />
